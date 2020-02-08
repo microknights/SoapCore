@@ -1,3 +1,22 @@
+### MicroKnights Haxx
+
+#### Support for ISO-8859-1
+Use `SoapOtions` on SoapEnpoint.
+```
+app.UseSoapEndpoint<IMySoapConsumer>("/soap/consumer", soapOptions, SoapSerializer.XmlSerializer);
+```
+#### Additional feature, get raw soap string
+By added a property `SoapXml` to you endpoint consumer, you will get the entire soap xml string.
+```
+    public interface IMySoapConsumer
+    {
+        [OperationContract(Action = "", ReplyAction = "*", Name = "MyOperation")]
+        MyResponse MyOperation(MyRequest request);
+
+        string SoapXml { get; set; }
+    }
+```
+
 # SoapCore
 
 SOAP protocol middleware for ASP.NET Core
