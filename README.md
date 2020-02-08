@@ -1,8 +1,14 @@
 ### MicroKnights Haxx
 
-#### Support for ISO-8859-1
+#### Support for ISO-8859-1 (and SOAP v1.1)
 Use `SoapOtions` on SoapEnpoint.
 ```
+var soapOptions = new SoapEncoderOptions
+{
+  WriteEncoding = Encoding.GetEncoding("ISO-8859-1"),
+  MessageVersion = MessageVersion.Soap11
+};
+
 app.UseSoapEndpoint<IMySoapConsumer>("/soap/consumer", soapOptions, SoapSerializer.XmlSerializer);
 ```
 #### Additional feature, get raw soap string
